@@ -134,7 +134,7 @@ func (p *AdaGrad) Predict(X map[string]float64) string {
 	for y_j, _ := range p.weight { // calculate scores for each label
 		dot := Dot(X, p.weight[y_j])
 		scores = append(scores, dot)
-//                 fmt.Println(y_j, dot)
+		//                 fmt.Println(y_j, dot)
 		if dot > maxScore {
 			maxScore = dot
 			pred_y_i = y_j
@@ -143,9 +143,9 @@ func (p *AdaGrad) Predict(X map[string]float64) string {
 	if p.haveSameScores(scores) {
 		pred_y_i = p.labelDefault
 	}
-//         fmt.Println(scores)
-//         fmt.Println("predy", pred_y_i, "Default", p.labelDefault)
-//         fmt.Println("")
+	//         fmt.Println(scores)
+	//         fmt.Println("predy", pred_y_i, "Default", p.labelDefault)
+	//         fmt.Println("")
 	return pred_y_i
 }
 
@@ -220,6 +220,7 @@ func LoadModel(fname string) AdaGrad {
 				weight[label][id] = w
 			} else {
 				weight[label] = map[string]float64{}
+				weight[label][id] = w
 			}
 		}
 		if a == "d" {
